@@ -7,7 +7,6 @@
 !**/.env.example
 **/keycloak.conf.before-local-admin
 **/user-sync-state/
-**/early-setup-pw/
 
 # Dependencies and generated build output
 **/node_modules/
@@ -19,6 +18,5 @@
 
 # Local backups and historical theme bundles
 /_backups/
-/early-setup-pw/
 /keycloak-theme-backup-*/
 **/keycloak-theme-backup-*/
