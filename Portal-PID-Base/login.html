@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sign in — Portal PID</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+  <section class="lg-left" aria-label="Portal PID">
+    <span class="lg-circle c1"></span><span class="lg-circle c2"></span><span class="lg-circle c3"></span>
+    <div class="lg-top">
+      <div class="lg-brand">
+        <span class="mark" id="brandMark"></span>
+        <span><b>Portal PID</b><small>PT Pelita Indonesia Djaya</small></span>
+      </div>
+      <div class="lg-meta">
+        <span id="greet">Selamat siang 👋</span>
+        <button type="button" id="timePill" class="lg-timepill tnum" title="Click to switch between 24-hour and 12-hour time" aria-label="Current date and time, click to switch time format">
+          <span class="lg-tp-date"><span id="calIco"></span><span id="dateTxt">-- --- ----</span></span>
+          <span class="lg-tp-div"></span>
+          <span class="lg-tp-clock"><span class="lg-livedot" aria-hidden="true"></span><span id="clockTxt">--:--:--</span><span id="tzTxt">&nbsp;WIB</span></span>
+        </button>
+      </div>
+    </div>
+    <div class="lg-hero">
+      <h1>Satu portal,<br>semua akses.</h1>
+      <p>Masuk sekali untuk mengakses seluruh aplikasi internal perusahaan — SDM, gudang, aset, legal, dan pelatihan — dari satu akun yang sama.</p>
+      <div class="lg-chips" id="chips"></div>
+    </div>
+    <div class="lg-stats">
+      <div><b>5</b><span>Aplikasi terhubung</span></div>
+      <div><b>1,248</b><span>Pengguna aktif</span></div>
+      <div><b>SSO</b><span>Masuk sekali untuk semua</span></div>
+    </div>
+  </section>
+
+  <section class="lg-right">
+    <div class="lg-card">
+      <div class="lg-mbrand"><span class="mark" id="brandMark2"></span><span><b>Portal PID</b><small>PT Pelita Indonesia Djaya</small></span></div>
+      <span class="lg-badge" id="badge">Employee</span>
+      <h2>Sign in</h2>
+      <p class="lg-sub" id="sub">Gunakan akun Portal PID Anda untuk melanjutkan.</p>
+
+      <div class="lg-alert" id="formAlert" role="alert" hidden></div>
+
+      <form id="loginForm" novalidate>
+        <div class="lg-field" id="fId">
+          <label for="empId" id="idLabel">Employee ID or email</label>
+          <div class="lg-inp"><input id="empId" type="text" autocomplete="username" placeholder="e.g. staff or raka.pratama@pid.co.id"></div>
+          <span class="lg-err" id="idErr">Enter your employee ID or email.</span>
+        </div>
+        <div class="lg-field" id="fPw">
+          <label for="pw">Password</label>
+          <div class="lg-inp">
+            <input id="pw" type="password" autocomplete="current-password" placeholder="Enter your password">
+            <button type="button" class="eye" id="eyeBtn" aria-label="Show password"></button>
+          </div>
+          <span class="lg-err">Enter your password.</span>
+        </div>
+        <div class="lg-row">
+          <label class="lg-remember"><input type="checkbox" id="remember" checked> Keep me signed in</label>
+          <a class="lg-link" href="#" id="forgotLink">Forgot password?</a>
+        </div>
+        <button class="lg-btn lg-primary" id="submitBtn" type="submit">Sign In</button>
+      </form>
+
+      <div class="lg-or">atau</div>
+      <button class="lg-btn lg-ghost" id="modeBtn" type="button"><span id="modeIco"></span><span id="modeTx">Masuk sebagai Guest</span></button>
+
+      <div class="lg-demo" id="demo"></div>
+      <p class="lg-foot">Portal PID · v1.0 · Need help? Contact your HR administrator.</p>
+    </div>
+  </section>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+.sso-app-card {
+    width: 100%;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.sso-app-card:hover {
+    border-color: var(--pri);
+}
+
+.sso-app-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.sso-app-description {
+    display: block;
+    margin-top: 6px;
+    color: var(--mut);
+    font-size: 13px;
+}
+
+.sso-save-success {
+    margin-top: 8px;
+    color: #146c43;
+    font-size: 13px;
+}

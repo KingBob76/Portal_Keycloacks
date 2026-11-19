@@ -1,0 +1,484 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
+.login-page,
+.login-page * {
+    box-sizing: border-box;
+}
+
+body:has(.login-page) {
+    margin: 0;
+    padding: 0;
+    background: #0e1622;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+body:has(.login-page) #root {
+    min-height: 100vh;
+}
+
+.login-page {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    background: #0e1622;
+    color: #e8eef8;
+    font-size: 14px;
+    line-height: 22px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.login-page button,
+.login-page input {
+    font: inherit;
+}
+
+.login-page button {
+    color: inherit;
+    cursor: pointer;
+}
+
+.lg-left {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 48px;
+    color: #fff;
+    text-shadow: 0 1px 3px rgb(10 20 46 / 45%);
+    background:
+        radial-gradient(circle at 10% 6%, rgb(255 255 255 / 10%), transparent 40%),
+        radial-gradient(circle at 80% 54%, rgb(114 188 232 / 16%), transparent 30%),
+        linear-gradient(165deg, #16274d 0%, #1e3470 38%, #284289 72%, #2e4c96 100%);
+}
+
+.lg-left > * {
+    position: relative;
+    z-index: 1;
+}
+
+.lg-circle {
+    position: absolute;
+    z-index: 0 !important;
+    border-radius: 50%;
+    background: rgb(255 255 255 / 6%);
+}
+
+.lg-circle.c1 {
+    width: 300px;
+    height: 300px;
+    top: -150px;
+    right: -40px;
+}
+
+.lg-circle.c2 {
+    width: 380px;
+    height: 380px;
+    right: 120px;
+    bottom: -190px;
+    background: rgb(66 127 191 / 14%);
+}
+
+.lg-circle.c3 {
+    width: 150px;
+    height: 150px;
+    left: -60px;
+    bottom: 90px;
+}
+
+.lg-top {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.lg-brand,
+.lg-mbrand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.lg-brand .mark,
+.lg-mbrand .mark {
+    display: grid;
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    border: 1px solid rgb(255 255 255 / 18%);
+    border-radius: 9px;
+    background: rgb(255 255 255 / 12%);
+}
+
+.lg-brand b,
+.lg-brand small,
+.lg-mbrand b,
+.lg-mbrand small {
+    display: block;
+}
+
+.lg-brand b,
+.lg-mbrand b {
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 700;
+}
+
+.lg-brand small {
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.lg-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+}
+
+.lg-timepill {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 6px 5px 14px;
+    border: 1px solid rgb(255 255 255 / 16%);
+    border-radius: 999px;
+    background: rgb(255 255 255 / 8%);
+    color: #fff;
+    font: inherit;
+    backdrop-filter: blur(8px);
+}
+
+.lg-tp-date,
+.lg-tp-clock {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.lg-tp-date {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.lg-tp-div {
+    width: 1px;
+    height: 14px;
+    margin: 0 10px;
+    background: rgb(255 255 255 / 22%);
+}
+
+.lg-tp-clock {
+    padding: 5px 11px 5px 9px;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 14%);
+    font-size: 12px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.lg-livedot {
+    width: 6px;
+    height: 6px;
+    flex: none;
+    border-radius: 50%;
+    background: #7ce28f;
+}
+
+.lg-hero {
+    max-width: 520px;
+    margin: auto 0;
+}
+
+.lg-hero h1 {
+    margin: 0 0 14px;
+    font-size: 38px;
+    line-height: 1.16;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.lg-hero p {
+    max-width: 480px;
+    margin: 0 0 24px;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+}
+
+.lg-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.lg-chip {
+    display: inline-flex;
+    height: 34px;
+    align-items: center;
+    padding: 0 14px;
+    border: 1px solid rgb(255 255 255 / 22%);
+    border-radius: 17px;
+    background: rgb(255 255 255 / 10%);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.lg-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 36px;
+}
+
+.lg-stats b,
+.lg-stats span {
+    display: block;
+}
+
+.lg-stats b {
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 700;
+}
+
+.lg-stats span {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+}
+
+.lg-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    background: #0e1622;
+}
+
+.lg-card {
+    width: 100%;
+    max-width: 380px;
+}
+
+.lg-mbrand {
+    display: none;
+    margin-bottom: 28px;
+}
+
+.lg-mbrand .mark {
+    border-color: transparent;
+    background: linear-gradient(135deg, #427fbf, #72bce8);
+    color: #0a1a33;
+}
+
+.lg-mbrand small {
+    color: #8fa0bc;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.lg-badge {
+    display: inline-flex;
+    height: 24px;
+    align-items: center;
+    padding: 0 12px;
+    border: 1px solid #2a3e60;
+    border-radius: 12px;
+    background: #15233b;
+    color: #8dcbef;
+    font-size: 11px;
+    line-height: 16px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.lg-card h2 {
+    margin: 14px 0 4px;
+    color: #fff;
+    font-size: 26px;
+    line-height: 34px;
+    font-weight: 700;
+}
+
+.lg-sub {
+    margin: 0 0 28px;
+    color: #b4c0d6;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.lg-alert {
+    margin-bottom: 18px;
+    padding: 12px 14px;
+    border-radius: 9px;
+    background: #3a1f19;
+    color: #f6a794;
+    font-size: 13px;
+    line-height: 19px;
+    overflow-wrap: anywhere;
+}
+
+.lg-field {
+    margin-bottom: 18px;
+}
+
+.lg-field label {
+    display: block;
+    margin-bottom: 8px;
+    color: #e8eef8;
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 500;
+}
+
+.lg-inp {
+    position: relative;
+}
+
+.lg-inp input {
+    width: 100%;
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid #26344b;
+    border-radius: 9px;
+    outline: none;
+    background: #141e2d;
+    color: #fff;
+}
+
+.lg-inp input::placeholder {
+    color: #6f7f9b;
+}
+
+.lg-inp input:focus {
+    border-color: #72bce8;
+    box-shadow: 0 0 0 3px rgb(114 188 232 / 22%);
+}
+
+.lg-inp input[aria-invalid="true"] {
+    border-color: #e4806a;
+}
+
+.lg-inp .eye {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    display: grid;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    border: 0;
+    border-radius: 7px;
+    background: transparent;
+    color: #8fa0bc;
+}
+
+.lg-inp .eye:hover {
+    background: #1c2a40;
+    color: #fff;
+}
+
+.lg-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.lg-remember {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e8eef8;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.lg-remember input {
+    width: 16px;
+    height: 16px;
+    accent-color: #72bce8;
+}
+
+.lg-link {
+    color: #8dcbef;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.lg-link:hover {
+    text-decoration: underline;
+}
+
+.lg-btn {
+    display: flex;
+    width: 100%;
+    height: 46px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 0;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.lg-primary {
+    background: #72bce8;
+    color: #0a1a33 !important;
+}
+
+.lg-primary:hover {
+    background: #8ccbef;
+}
+
+.lg-foot {
+    margin: 24px 0 0;
+    color: #6f7f9b;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+}
+
+.login-page :focus-visible {
+    outline: 2px solid #72bce8;
+    outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+    .login-page {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .lg-left {
+        display: none;
+    }
+
+    .lg-mbrand {
+        display: flex;
+    }
+}
+
+@media (max-width: 420px) {
+    .lg-right {
+        padding: 24px 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .login-page *,
+    .login-page *::before,
+    .login-page *::after {
+        transition: none !important;
+        animation-duration: 0.01ms !important;
+    }
+}

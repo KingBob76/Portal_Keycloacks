@@ -1,0 +1,78 @@
+name: glpi
+
+services:
+  db:
+    image: mariadb:11.4
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: ${GLPI_DB_NAME}
+      MARIADB_USER: ${GLPI_DB_USER}
+      MARIADB_PASSWORD: ${GLPI_DB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  # Optional Cloudflare Quick Tunnel for temporary testing. The recommended
+  # stable local gateway is exposed only on loopback port 32770 for ngrok.
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    profiles: ["quick-tunnel"]
+    command: ["tunnel", "--no-autoupdate", "--url", "http://glpi-api-proxy:8080"]
+    depends_on:
+      - glpi-api-proxy
+
+  glpi-api-proxy:
+    image: nginx:alpine
+    restart: unless-stopped
+    profiles: ["quick-tunnel"]
+    ports:
+      - "127.0.0.1:32770:8080"
+    networks:
+      default: {}
+      glpi_api:
+        ipv4_address: 172.30.77.3
+    environment:
+      GLPI_TUNNEL_KEY: ${GLPI_TUNNEL_KEY:?Set GLPI_TUNNEL_KEY in .env before starting the quick tunnel}
+      NGINX_ENVSUBST_FILTER: ^GLPI_TUNNEL_KEY$
+    volumes:
+      - ./nginx/glpi-api-proxy.conf.template:/etc/nginx/templates/default.conf.template:ro
+
+  glpi-keycloak-user-sync:
+    image: node:22-alpine
+    restart: unless-stopped
+    profiles: ["user-sync"]
+    working_dir: /app
+    command: ["node", "sync.mjs"]
+    environment:
+      KEYCLOAK_BASE_URL: http://host.docker.internal:8080
+      KEYCLOAK_REALM: portal-pid
+      KEYCLOAK_SYNC_CLIENT_ID: ${KEYCLOAK_SYNC_CLIENT_ID:-}
+      KEYCLOAK_SYNC_CLIENT_SECRET: ${KEYCLOAK_SYNC_CLIENT_SECRET:-}
+      GLPI_API_URL: http://172.30.77.3:8080/apirest.php
+      GLPI_SYNC_USER_TOKEN: ${GLPI_SYNC_USER_TOKEN:-}
+      GLPI_SYNC_APP_TOKEN: ${GLPI_SYNC_APP_TOKEN:-}
+      GLPI_TUNNEL_KEY: ${GLPI_TUNNEL_KEY:-}
+      SYNC_INTERVAL_SECONDS: ${SYNC_INTERVAL_SECONDS:-60}
+      SYNC_IMPORT_EXISTING: ${SYNC_IMPORT_EXISTING:-false}
+    volumes:
+      - ./user-sync:/app:ro
+      - ./user-sync-state:/data
+    networks:
+      glpi_api:
+        ipv4_address: 172.30.77.4
+
+volumes:
+  db_data:
+
+networks:
+  glpi_api:
+    name: glpi-api-static
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.77.0/24

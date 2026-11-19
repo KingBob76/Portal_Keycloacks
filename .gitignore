@@ -1,0 +1,24 @@
+# Local secrets and environment values
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+**/keycloak.conf.before-local-admin
+**/user-sync-state/
+**/early-setup-pw/
+
+# Dependencies and generated build output
+**/node_modules/
+**/dist/
+**/dist_keycloak/
+**/.vercel/
+**/*.jar
+**/*.log
+
+# Local backups and historical theme bundles
+/_backups/
+/early-setup-pw/
+/keycloak-theme-backup-*/
+**/keycloak-theme-backup-*/

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portal PID — HR Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-head">
+      <button class="switcher" id="swBtn" aria-haspopup="true" aria-expanded="false" aria-controls="swPanel">
+        <span class="mod-tile" id="swTile"></span>
+        <span class="lbl"><span class="t1" id="swName">HR Management</span><span class="t2">Switch app</span></span>
+        <span class="chev" id="swChev"></span>
+      </button>
+      <div class="pop sw-panel" id="swPanel" data-pop hidden>
+        <div class="sw-head"><strong>Pilih aplikasi</strong><button type="button" id="swClose" aria-label="Tutup menu aplikasi">×</button></div>
+        <div class="sw-grid" id="swGrid"></div>
+        <div class="sw-foot" id="swFoot"></div>
+      </div>
+    </div>
+    <div class="rail-wrap"><button class="nav-item rail-toggle" id="railBtn" aria-expanded="false"><span id="railIco"></span><span class="lbl" id="railLbl">Collapse menu</span></button></div>
+    <nav class="nav" id="nav" aria-label="App menu"></nav>
+    <div class="side-set">
+      <div class="seg portal-theme" role="group" aria-label="Mode tema">
+        <button type="button" data-theme-mode="light" aria-label="Tema terang" aria-pressed="false"><span aria-hidden="true">☼</span><b>Light</b></button>
+        <button type="button" data-theme-mode="dark" aria-label="Tema gelap" aria-pressed="false"><span aria-hidden="true">☾</span><b>Dark</b></button>
+        <button type="button" data-theme-mode="auto" aria-label="Tema otomatis" aria-pressed="false"><span aria-hidden="true">▣</span><b>Auto</b></button>
+      </div>
+    </div>
+    <div class="side-foot">
+      <span id="flower"></span>
+      <span class="lbl"><span class="n1">Portal PID</span><span class="n2">PT Pelita Indonesia Djaya</span></span>
+    </div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="top-left"><button class="burger" id="burger" aria-label="Open menu"></button></div>
+      <div class="search">
+        <span class="ico" id="searchIco"></span>
+        <input id="q" type="search" placeholder="Search employees, documents, or services" aria-label="Search across all apps" autocomplete="off">
+        <span class="kbd" id="kbd">Ctrl K</span>
+      </div>
+      <div class="top-right">
+        <div class="wrap">
+          <button class="icon-btn" id="bellBtn" aria-label="Notifikasi" aria-haspopup="true" aria-expanded="false" aria-controls="npPanel"><span id="bellIco"></span><span class="dot-alert" hidden></span></button>
+          <div class="pop np" id="npPanel" data-pop hidden>
+            <div class="notif-head"><h3>Notifikasi</h3><button type="button" id="notifReadAll" class="notif-read-all">Tandai dibaca</button></div>
+            <ul id="notificationList"><li class="notif-empty">Notifikasi helpdesk akan tampil di sini.</li></ul>
+          </div>
+        </div>
+        <div class="wrap">
+          <button class="icon-btn" id="infoBtn" aria-label="Informasi terbaru" aria-haspopup="true" aria-expanded="false" aria-controls="infoPanel"><span id="infoIco"></span></button>
+          <div class="pop np info-pop" id="infoPanel" data-pop hidden>
+            <h3>Informasi terbaru</h3>
+            <ul>
+              <li><span class="pip"></span><span><span class="a">Maintenance jaringan kantor pusat, Sabtu 24 Okt 22:00 sampai 02:00 WIB</span><span class="b">20 Okt 2026 · Divisi IT</span></span></li>
+              <li><span class="pip"></span><span><span class="a">Kebijakan password baru berlaku mulai 1 November 2026</span><span class="b">19 Okt 2026 · Divisi IT</span></span></li>
+              <li><span class="pip"></span><span><span class="a">Aplikasi Manual Book sudah memuat panduan VPN terbaru</span><span class="b">15 Okt 2026 · Divisi IT</span></span></li>
+            </ul>
+          </div>
+        </div>
+        <button class="icon-btn help" aria-label="Help center" id="helpBtn"></button>
+        <div class="wrap">
+          <button class="user-btn" id="userBtn" aria-haspopup="true" aria-expanded="false" aria-controls="umPanel">
+            <span class="avatar">RP</span>
+            <span class="txt"><span class="u1">Raka Pratama</span><span class="u2">Staff · Technology</span></span>
+          </button>
+          <div class="pop um" id="umPanel" data-pop hidden>
+            <div class="who"><b>Raka Pratama</b><span>Logged in as Staff</span></div>
+            <div class="sso" id="ssoNote"></div>
+            <ul>
+              <li style="list-style:none"><button class="mi" id="miProfile"></button></li>
+              <li style="list-style:none"><button class="mi" id="miSso"></button></li>
+              <li style="list-style:none"><button class="mi" id="miOut"></button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="page" id="page" tabindex="-1"></main>
+  </div>
+</div>
+<div class="dscrim" id="dscrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true" aria-labelledby="dTitle"><div class="drawer-head"><h2 id="dTitle"></h2><button class="round" id="dClose" aria-label="Close panel">✕</button></div><div class="drawer-body" id="dBody"></div></aside>
+<div class="tip" id="tip" hidden></div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
